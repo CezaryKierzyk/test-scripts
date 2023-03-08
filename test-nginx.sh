@@ -1,12 +1,11 @@
 #!/bin/bash
 
-
-
 sudo apt-get -y install nginx
 sudo systemctl enable nginx
 sudo systemctl start nginx
 
-sudo echo " <!DOCTYPE html>
+cat << EOF | sudo tee /var/www/html/index.nginx-debian.html
+<!DOCTYPE html>
 <html>
 <head>
 <title>Welcome to nginx!</title>
@@ -27,4 +26,5 @@ sudo echo " <!DOCTYPE html>
 
 <p><em>This is debug site for your deployment.</em></p>
 </body>
-</html>" | sudo tee /var/www/html/index.nginx-debian.html
+</html>
+EOF 
